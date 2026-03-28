@@ -2,12 +2,19 @@ import PerspectivePanel from "./PerspectivePanel";
 import StatsBar from "./StatsBar";
 
 export default function TopicCard({ topic }) {
-  const { title, summary, category, perspectives, totalArticles } = topic;
+  const { title, summary, category, perspectives, totalArticles, imageUrl, imageAlt } = topic;
 
   const categoryClass = `category category-${category.toLowerCase()}`;
 
   return (
     <article className="topic-card">
+      {imageUrl && (
+        <img
+          src={imageUrl}
+          alt={imageAlt || title}
+          className="topic-image"
+        />
+      )}
       <span className={categoryClass}>{category}</span>
       <h2>{title}</h2>
       <p className="summary">{summary}</p>
